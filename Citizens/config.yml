@@ -2,7 +2,7 @@
 
 npc:
   chat:
-    options:
+    options:asglkihajwgeoahjwgoaiwhg
       bystanders-hear-targeted-chat: true
       max-number-of-targets-to-show: 2
       multiple-targets-format: <target>|, <target>| & <target>| & others
