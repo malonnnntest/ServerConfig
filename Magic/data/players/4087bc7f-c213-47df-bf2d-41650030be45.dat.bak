@@ -1,0 +1,21 @@
+id: 4087bc7f-c213-47df-bf2d-41650030be45
+name: UltraOwlDC
+last_cast: 0
+cooldown_expiration: 0
+last_death_location: 962.6683531242527,-73.45687959247456,119.4485906062193,survival,107.550674,25.199997
+fall_protection_count: 0
+fall_protection: 0
+brush:
+  map_id: 314
+  material: dirt
+  data: 0
+  schematic: ''
+  scale: 1.0
+  erase: true
+undo: []
+spells: {}
+open_wand: false
+gave_welcome_wand: false
+data: {}
+properties: {}
+classes: {}

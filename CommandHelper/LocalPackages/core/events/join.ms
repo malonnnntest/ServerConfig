@@ -2,7 +2,11 @@ bind(player_join,null,null,@event){
     
     @class = pgroup()[0]
     @plr = player()
-    include('/home/minecraft/server/plugins/CommandHelper/LocalPackages/commands/buffs/' . @class . '.ms')
+    try(
+        include('/home/minecraft/server/plugins/CommandHelper/LocalPackages/commands/buffs/' . @class . '.ms')
+    ,
+        @hero = associative_array('class':'')
+    )
     include('/home/minecraft/server/plugins/CommandHelper/includes/changeSkin.ms')
     include('/home/minecraft/server/plugins/CommandHelper/includes/changeTrail.ms')
     
@@ -19,6 +23,16 @@ bind(player_join,null,null,@event){
         die()
     }
     
+    # -------------------------------
+    # reset confusion
+    # -------------------------------
+    store_value(@plr."isConfused","false")
+    
+    # -------------------------------
+    # reset speedEffects
+    # -------------------------------
+    store_value(@plr."speedEffects","false")
+
     # -------------------------------
     # If joining player is mortal, undisguise
     # -------------------------------
@@ -44,24 +58,18 @@ bind(player_join,null,null,@event){
         }
     }
 
+    if(@plr == "God_Doesnt_Exist" || @plr == "xSp4kz"){
+        foreach(@player in @plrs){
+            play_named_sound(ploc(), array('sound': 'xyz.theone', 'volume': 10000), @player)
+        }
+    }
+
     set_timeout(5000, closure(
         _changeSkin(@plr,@hero['sig'],@hero['val'])
         _changeTrail(@plr, @hero['trail'])
+        #if(@plr == "GalaxehPanda" || @plr == "Suannaii"){
+        #    runas(~console,"/runalias /sing asdf ".@plr)
+        #}
     ))
-    if(@plr == "Legend_Of_Helix" || @plr == "Tektronic"){
-        set_timeout(5000,closure(
-            runas(~console,"/warp creative ".@plr)
-        ))
-        set_timeout(6000,closure(
-            runas(~console,"/warp helix ".@plr)
-        ))
-    }
-    if(@plr == "missmandyy"){ 
-        set_timeout(5000,closure(
-            runas(~console,"/warp creative ".@plr)
-        ))
-        set_timeout(6000,closure(
-            runas(~console,"/warp mandy ".@plr)
-        ))
-    }
+
 }

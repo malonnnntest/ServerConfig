@@ -13,6 +13,8 @@
                 "/buff",
                 "/jump 0-7",
                 "/run 0-5",
+                "/carryplayer",
+                "/dismountplayer",
                 "/haste 0-4",
                 "/web",
                 "/websling"
@@ -21,6 +23,7 @@
                 "/effect ". @plr ." 5 9999 10 true",
                 "/effect ". @plr ." 10 9999 2 true",
                 "/effect ". @plr ." 21 9999 9 true",
-                "/give ". @plr ." minecraft:web 64"                
+                "/give ". @plr ." minecraft:web 64",
+                "/shot give ". @plr ." webshot"
             )
         )

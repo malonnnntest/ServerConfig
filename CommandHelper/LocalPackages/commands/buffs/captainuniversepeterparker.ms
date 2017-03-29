@@ -3,37 +3,13 @@
 
 
 @hero = associative_array(
-            'name': '§4C§1a§9p§ft§1a§f§1§fin §fUniverse-PP',
+            'name': '§4C§1a§9p§ft§1a§f§1§fin §fUniverse§8(PP§8)',
             'class': 'captainuniversepeterparker',
-            'sig': 'xfeKOR3Y/0VN4nYXicnMdtX3BUZl8FYpxVT5WjKAMnVR8uI42itPLXDbUPjWkDTOXWYdlGdANP4wuJJFa8Hvxonl2AjOt9DePHVAxZdraOc7SEhckQ8y/mAK/2NlKehpJgEHT/L6vl+4+GmFys0S1/Xs/vqZjGspxAJBEmacN3JNVwyOZA1E0RO/Hbbloblza4l2afWozm+JDtCCi+1t9trCDArN9zTrjykIvXfJZgWhr3sdHTRDlepjt/IrnL8JC1jQn7sDXZlmkyxIXxQ5s118DCZnt1/YZBpRAfKTmqmCjCT1vyaDKitEUHTXIW9lzX/EiOS05rucy+e4eNsb1ACIIrczx3hAa4BdIVAEioJbQ1LKNCj2Qdd2JSWhBJdtETZ74L+q0LbPYl2EGpRJK94dw468ohvZy8QJM+PWP4Buds3M1nTKPfs11HanfnePSUy9SUZbl/BBOXsNRVDXRzMaZjYPIymNOqpMZuQMg+D+Ijq1P20Em9xjaz2MowvgR1M3wk6aST09geVPdD52sWyT9R2VVnV4Z3mHhulytkPjUr5QovtRn7gsAlH9W82B5JVRKUVfgGZdQJMkZ697iyOTOCcmtmeFdcADYEk05rKQQKTnygUcQMIpyyjcyrUiZoNq4qsHYqaL4uIowNy1tkfhcmm6sNHRQ2elLJsKxbc=',
-            'val': 'eyJ0aW1lc3RhbXAiOjE0NzY5MTQxODgxMjUsInByb2ZpbGVJZCI6IjdkZmY5MWRkOTZlNjRiNzM5ZGZhMTc5OTJlMDU1Njk0IiwicHJvZmlsZU5hbWUiOiJXaXR0bGVUaW1teSIsInNpZ25hdHVyZVJlcXVpcmVkIjp0cnVlLCJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTE2OWM5ZWJkNDEzYjBhMDVkNjEwNDI4ZjMyZjlhNmI4YjI1NDJjNGI0MTY4N2ZjMmM5ZmIyYWI1ZWExMSJ9fX0=',
+            'sig': 'bXVtfbWwGBWjGOM1gCvM6C8NMBCTcfFJyt7+CZ+auY2CzCEZhN/QhTnloMDZpfOOl2Cqg9iR9gB2unuXsLHUL9hW1cbQ/ymQvxuFhBjY7l2BaRgaHObCFf0ddxDvb4LpogE28fdqwLE5j6XIOoZJUkBhN/kic3L81LIwlvpJH+kBUd0ejQ/R8e5xfaH27ZaTWCVAbRX6ZMsRVLobI1dc3WW3StqtjlXTRQ2o1Hgh8rK+JtdP6gunAlTQZ2cXUmsWatusujKwtZXUxPos9GLLt26mqo8xuTbAdbDGDtKzhnE0a4MRPf7LFXVU5hAePssGHX2vFPh8FwEAvQsIWtBwrxd/wCGFTaxnlhqDshf3tdytAw57tpd0Gaty0mzHbj3zLi0xLcuoaoCJXF1ILvyJAHXbXlGjuuX6S4HRoUjRIgE7NODFfrCSJNvJ21CpA0W7OXNesef3lvka8EpcLzHNEzEJKftpXXPBFF+J3+8W0bP6rGpYacbhaPO6/xNL2hXuGQQl7YLnh9FVWaTp6WVvKQD7Tawcv7y4hZeI6+TOaH90m1JAYPG4LNKWBTk3louzrCDHA6fvqAUIAe80HNHcHhariLuz7h9Ma8oYjESLpJepUEQpSLKrkTU/6rvJfhmHB40vyfKv30EXXL14Sjw8cQkmzHFye7FsOrQhvIchj0c=',
+            'val': 'eyJ0aW1lc3RhbXAiOjE0OTAwMzIwNjgwNjEsInByb2ZpbGVJZCI6Ijg3ZmIzYzZjNWZmNjRiZjZiMzI2OTkyYzYxMzdlYTEyIiwicHJvZmlsZU5hbWUiOiJHb2RfRG9lc250X0V4aXN0Iiwic2lnbmF0dXJlUmVxdWlyZWQiOnRydWUsInRleHR1cmVzIjp7IlNLSU4iOnsidXJsIjoiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9mNmFkNzk0MTYwZmUyNTk4MjliMzMzODBmY2U0OWFkMTQyYTJhY2UzNzY4YjI5MzQzMzU0NGY0YmJjNmVkNWMifX19',
             'trail': '',
-            'op': 'true',
+            'op': 'false',
             'speech': "With this amount of power comes greater responsibility.",
-            'powers': array(
-                "/buff",
-                "/jump 0-9",
-                "/run 0-9",
-                "/haste 0-9",
-                "/fly",
-                "/web",
-                "/websling",
-                "/gmc",
-                "/gms",
-                "/speak <playername>",
-                "/disguiseviewself",
-                "/mindcontrol <playername>",
-                "/confuse <player>",
-                "/stopmindcontrol"
-            ),
-            'buffs': array(
-                "/effect ". @plr ." 5 9999 20 true",
-                "/effect ". @plr ." 11 9999 3 true",
-                "/effect ". @plr ." 12 9999 1 true",
-                "/effect ". @plr ." 16 9999 1 true",
-                "/effect ". @plr ." 21 9999 19 true",
-                "/give ". @plr ." minecraft:iron_boots 1 8:30 4:30 name:&4S&ep&4e&ce&ed&8s&0t&9e&1r_&4Boots",
-                "/shot give ". @plr ." yellowlightning",
-                "/shot give ". @plr ." webshot"
-            )
+            'powers': array(),
+            'buffs': array()
         )

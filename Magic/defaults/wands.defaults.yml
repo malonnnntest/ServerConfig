@@ -9,6 +9,7 @@
 #
 admin:
     inherit: conduit
+    path: staff
     icon: wood_hoe:6
     migrate_icon: monster_eggs:2
     cost_reduction: 2
@@ -36,6 +37,40 @@ admin:
         - repair
         - superrepair
 
+appearance_beginner:
+    upgrade: true
+    icon: wood_hoe:1
+    upgrade_icon: wood_hoe:1
+
+appearance_student:
+    upgrade: true
+    icon: wood_hoe:2
+    upgrade_icon: wood_hoe:2
+
+appearance_apprentice:
+    upgrade: true
+    icon: wood_hoe:3
+    upgrade_icon: wood_hoe:3
+
+appearance_master:
+    upgrade: true
+    icon: wood_hoe:4
+    upgrade_icon: wood_hoe:4
+
+appearance_engineer:
+    upgrade: true
+    icon: wood_hoe:5
+    upgrade_icon: wood_hoe:5
+
+appearance_architect:
+    upgrade: true
+    icon: wood_hoe:5
+    upgrade_icon: wood_hoe:5
+
+appearance_conduit:
+    upgrade: true
+    icon: wood_hoe:6
+    upgrade_icon: wood_hoe:6
 apprentice:
     inherit: student
     icon: wood_hoe:3
@@ -102,28 +137,28 @@ apprentice:
       - walls
 
 apprenticeboots:
-    icon: chainmail_boots
+    icon: "leather_boots:#00AAFF"
     indestructible: false
     locked: true
     keep: true
     mana_max_boost: 0.05
 
 apprenticechestplate:
-    icon: chainmail_chestplate
+    icon: "leather_chestplate:#00AAFF"
     indestructible: false
     locked: true
     keep: true
     mana_max_boost: 0.05
 
 apprenticehelmet:
-    icon: chainmail_helmet
+    icon: "leather_helmet:#00AAFF"
     indestructible: false
     locked: true
     keep: true
     mana_max_boost: 0.05
 
 apprenticeleggings:
-    icon: chainmail_leggings
+    icon: "leather_leggings:#00AAFF"
     indestructible: false
     locked: true
     keep: true
@@ -173,7 +208,7 @@ architect:
         - column
         - levitate
         - superalter
-    materials:
+    brushes:
         - stone
         - wood
         - glass
@@ -202,14 +237,16 @@ architect:
 
 architectstaff:
   inherit: conduit
+  path: staff
   active_spell: pillar
-  active_material: copy
+  active_brush: copy
   protected: true
   powered: true
   cost_reduction: 2
   effect_color: 8af553b2025f,0,8af553b2025f
   icon: wood_hoe:6
   migrate_icon: gold_pickaxe
+  sp_multiplier: 0
   spells:
     - absorb@8
     - alter@22
@@ -253,7 +290,7 @@ architectstaff:
     - supertorch
     - fling|4
     - lockpick
-  materials:
+  brushes:
     - clone@43
     - cobblestone
     - copy@17
@@ -354,17 +391,25 @@ golemheart:
 # Base templates
 # These are used to specify defaults for wands and other magic items.
 #
+base_bound:
+  hidden: true
+  bound: true
+  keep: true
+  invulnerable: true
+  immortal: true
+  track: true
+  undroppable: true
+  indestructible: true
+
 base_wand:
     hidden: true
+    inherit: base_bound
+    mode: inventory
     drop: toggle
     left_click: cast
     right_click: none
     swap: cycle_hotbar
     quiet: 1
-    bound: true
-    keep: true
-    undroppable: true
-    indestructible: true
     effect_bubbles: false
     attributes:
       GENERIC_ATTACK_SPEED: 10
@@ -372,97 +417,15 @@ base_wand:
   
 base_sword:
     hidden: true
+    inherit: base_bound
+    mode: inventory
     drop: toggle
     left_click: none
     right_click: none
     swap: cycle_hotbar
     quick_cast: true
     quiet: 1
-    bound: true
-    keep: true
-    undroppable: true
-    indestructible: true
 
-
-base_lightsaber:
-    icon_inactive: wood_hoe:14
-    icon_inactive_delay: 500
-    drop: toggle
-    left_click: none
-    swap: cycle_hotbar
-    quick_cast: true
-    mana_max: 50
-    mana: 50
-    mana_regeneration: 5
-    protection_physical: 0.5
-    quiet: 1
-    bound: true
-    keep: true
-    undroppable: true
-    indestructible: true
-    effect_bubbles: false
-    effects:
-        open:
-        -  class: EffectSingle
-           sound: magic.ignite
-           sound_volume: 1
-           location: origin
-           effectlib:
-             class: HelixEffect
-             iterations: 1
-             radius: 0.3
-             particle: flame
-        close:
-        -  class: EffectSingle
-           sound: magic.zap
-           sound_volume: 1
-           location: origin
-           effectlib:
-             class: HelixEffect
-             iterations: 1
-             radius: 0.3
-             particle: smoke_normal
-        swing:
-        -  class: EffectSingle
-           sound: magic.ignite
-           sound_volume: 1
-           location: origin
-           effectlib:
-             class: HelixEffect
-             iterations: 1
-             radius: 0.3
-             particle: flame
-        hit_entity:
-        -  class: EffectSingle
-           sound: magic.ignite
-           sound_volume: 1
-           location: origin
-           effectlib:
-             class: HelixEffect
-             iterations: 1
-             radius: 0.3
-             particle: smoke_large
-        hit_block:
-        -  class: EffectSingle
-           sound: magic.ignite
-           sound_volume: 1
-           location: origin
-           effectlib:
-             class: HelixEffect
-             iterations: 1
-             radius: 0.3
-             particle: smoke_normal
-        hit_blocked:
-        -  class: EffectSingle
-           sound: magic.ignite
-           sound_volume: 1
-           location: origin
-           effectlib:
-             class: HelixEffect
-             iterations: 1
-             radius: 0.3
-             particle: smoke_normal
-             
 #
 # A starter battle wand
 #
@@ -502,21 +465,6 @@ battle:
 #
 beginner:
     inherit: wand
-
-blaster:
-    migrate_icon: monster_eggs:3
-    icon: wood_hoe:12
-    path: blaster
-    mode: cast
-    locked: true
-    quiet: 2
-    mana: 100
-    mana_max: 100
-    mana_regeneration: 10
-    active_spell: blaster
-    indestructible: true
-    spells:
-        - blaster
 
 borealis:
     inherit: master
@@ -562,14 +510,10 @@ borealis:
 broomstick:
     path: broom
     mode: cast
+    indestructible: true
     active_spell: broom
     migrate_icon: gold_spade
     icon: wood_hoe:11
-    indestructible: true
-    undroppable: true
-    bound: true
-    locked: true
-    keep: true
     effect_color: '880088'
     spells:
         - broom
@@ -649,7 +593,7 @@ conduit:
         - repair
         - backup
         - superrepair
-    materials:
+    brushes:
         - stone
         - wood
         - glass
@@ -716,7 +660,7 @@ conway:
         - commit
         - simulate3
         - animate
-    materials:
+    brushes:
         - schematic:life
         - schematic:glider
         - schematic:flare_beacon
@@ -755,6 +699,7 @@ cursedmeat:
   potion_effects: hunger:20
 
 
+# This is here to migrate old wands to the new template
 default:
   migrate_to: wand
 
@@ -854,7 +799,7 @@ lightgrayeffects:
     upgrade: true
     indestructible: false
     icon: carpet:8
-    effect_color: '404040'
+    effect_color: 'D0D0D0'
 aquaeffects:
     upgrade: true
     indestructible: false
@@ -928,6 +873,9 @@ haloeffects:
     effect_particle_data: 0
     effect_particle_radius: 0.4
     effect_particle_offset: 0.5
+empty:
+    hidden: true
+    icon: stick
 #
 # A starter engineering wand
 #
@@ -957,7 +905,7 @@ engineer:
       - pillar
       - place
       - levitate
-    materials:
+    brushes:
       - erase
       - map
       - stone
@@ -1017,15 +965,16 @@ goggles:
 
 # Heroes Integration
 heroes:
+    description: "Temporarily not working... will fix it eventually, I think"
     effect_color: random
     quiet: 1
-    icon: blaze_rod
-    bound: true
-    keep: true
-    undroppable: true
+    icon: stick
     indestructible: true
-    effect_bubbles: false
-    heroes: true
+    undroppable: true
+    mode: inventory
+    right_click: none
+    drop: toggle
+    left_click: cast
 
 hulkboots:
     icon: diamond_boots
@@ -1231,14 +1180,30 @@ miniwolf:
         - tag
         - mount
 
+mirrorshield:
+    icon: shield:1
+    indestructible: true
+    mode: none
+    bound: true
+    keep: true
+    right_click: none
+    left_click: none
+    drop: none
+    block_reflect_chance: 0.75
+    block_chance: 1
+    block_fov: 0.5
+    block_mage_cooldown: 3000
+    block_cooldown: 5000
+    
 ocarina:
     icon: wood_hoe:18
     locked: true
     keep: false
     quick_cast: true
     mode: inventory
-    undroppable: false
-    bound: false
+    right_click: toggle
+    swap: cycle_hotbar
+    left_click: cast
     undroppable: false
     indestructible: true
     hotbar_count: 3
@@ -1305,7 +1270,7 @@ engineer_upgrade:
     spells:
     - brushselect
     - place
-    materials:
+    brushes:
     - dirt
     - cobblestone
 architect_upgrade:
@@ -1424,37 +1389,24 @@ rocketboots:
     glow: true
     protection_falling: 1
 
-# Lightsabers!
-
-lightsaber_red:
-    inherit: base_lightsaber
-    path: sith
-    icon: gold_sword:4
-    effect_color: 'FF0000'
-    active_spell: push
+skillbook:
+    mode: cast
+    active_spell: skills
+    icon: book
+    indestructible: false
+    locked: true
     spells:
-        - push
-        - fire
+    - skills
 
-lightsaber_green:
-    inherit: base_lightsaber
-    path: jedi
-    icon: gold_sword:2
-    effect_color: '00FF00'
-    active_spell: push
-    spells:
-        - push
-        - pull
-
-lightsaber_blue:
-    inherit: base_lightsaber
-    path: jedi
-    icon: gold_sword:3
-    effect_color: '0000FF'
-    active_spell: push
-    spells:
-        - push
-        - pull
+spellbook:
+    mode: skills
+    icon: wood_hoe:31
+    indestructible: true
+    drop: toggle
+    undroppable: true
+    keep: true
+    bound: true
+    class: mage
 spleef:
     locked: true
     icon: stick
@@ -1472,6 +1424,7 @@ spleef:
 
 staff:
   inherit: master
+  path: staff
   hotbar_count: 2
   active_spell: levitate|4
   cost_reduction: 2
@@ -1479,6 +1432,7 @@ staff:
   protected: true
   icon: wood_hoe:6
   migrate_icon: gold_pickaxe
+  sp_multiplier: 0
   spells:
     - blink|6
     - cloak
@@ -1542,11 +1496,14 @@ student:
       - rocket
       - shrink
 
-chestmode:
-    icon: diamond_axe:205
-    upgrade: true
-    indestructible: false
-    mode: chest
+talisman:
+  icon: wood_hoe:30
+  indestructible: true
+  mana_max_boost: 0.3
+  mana_regeneration_boost: 0.2
+  sp_multiplier: 1.5
+  color: random
+  effect_bubbles: true
 quickcast_enable:
     icon: diamond_axe:206
     upgrade: true
@@ -1575,6 +1532,7 @@ mode_drop:
     right_click: none
     left_click: cast
     swap: cycle_hotbar
+    quick_cast: false
 mode_rightclick:
     icon: diamond_axe:211
     upgrade: true
@@ -1583,6 +1541,7 @@ mode_rightclick:
     right_click: toggle
     left_click: cast
     swap: none
+    quick_cast: false
 mode_sword:
     icon: diamond_axe:212
     upgrade: true
@@ -1600,6 +1559,14 @@ mode_swap:
     right_click: none
     left_click: cast
     swap: toggle
+    quick_cast: false
+chestmode:
+    icon: diamond_axe:205
+    upgrade: true
+    indestructible: false
+    mode: chest
+    drop: toggle
+    swap: none
 inventorymode:
     icon: diamond_axe:214
     upgrade: true
@@ -1639,6 +1606,179 @@ silent:
     upgrade: true
     indestructible: false
     quiet: -3
+uberwand:
+  inherit: conduit
+  path: staff
+  hotbar_count: 3
+  fill: true
+  protected: true
+  cost_reduction: 2.0
+  cooldown_reduction: 2.0
+  sp_multiplier: 0
+  consume_reduction: 1
+  mode: inventory
+  overrides:
+    - max_dimension 1024
+    - floodfill.depth 256
+  effect_particle: ENCHANTMENT_TABLE
+  potion_effects:
+    - SATURATION
+    - REGENERATION
+    - SPEED
+  active_brush: erase
+  active_spell: missile|4
+  spells:
+    - absorb@8
+    - alter@90
+    - animate@51
+    - arrowrain@72
+    - arrow|4@35
+    - backup@91
+    - blast|2@132
+    - blessing@115
+    - blink|3@1
+    - blob@57
+    - boom|2@37
+    - boon|2@135
+    - box@92
+    - bridge@29
+    - superbroom@7
+    - camera@133
+    - collapse@58
+    - commit@93
+    - convert@94
+    - counterspell@59
+    - curse@66
+    - day@4
+    - disarm@73
+    - disc@136
+    - disintegrate@31
+    - emp@81
+    - entangle@60
+    - familiar@85
+    - farm@86
+    - fill@10
+    - fireball@61
+    - fire|3@33
+    - flamethrower@62
+    - flare@114
+    - fling|2@2
+    - force@34
+    - gather@40
+    - ghast@38
+    - glider@56
+    - grenade|2@78
+    - heal@6
+    - icbm@79
+    - iterate@95
+    - kill@36
+    - laser|3@80
+    - levitate@0
+    - life@82
+    - lightning|3@87
+    - missile|4@3
+    - mob@67
+    - monster@68
+    - mount@116
+    - neutron@69
+    - nuke@117
+    - paint@27
+    - petrify@39
+    - phase@118
+    - pickpocket@134
+    - pillar@96
+    - place@9
+    - portal@119
+    - pull@25
+    - push@24
+    - recall@23
+    - recurse@97
+    - regenerate@98
+    - repair@99
+    - rollback@15
+    - shell|4@63
+    - shrink@64
+    - simulate3@84
+    - simulate@83
+    - singularity@120
+    - stash@137
+    - stun@65
+    - superalter@32
+    - superblast@100
+    - superblob@11
+    - superbox@105
+    - supercollapse@106
+    - superconvert@12
+    - superdisc@107
+    - superdome@108
+    - superkill@5
+    - superpyramid@109
+    - superregenerate@110
+    - superrepair@14
+    - superring@111
+    - supershell@13
+    - tag@70
+    - tendril@30
+    - supertorch@22
+    - torture@121
+    - toss@112
+    - tree@89
+    - volley@113
+    - wither@71
+    - wolfhouse@122
+    - wound@28
+  brushes:
+    - bedrock
+    - clone@19
+    - copy@17
+    - diamond_block
+    - dirt
+    - emerald_block
+    - erase@16
+    - glass
+    - sea_lantern
+    - glowstone
+    - gold_block
+    - grass
+    - ice
+    - iron_block
+    - lapis_block
+    - lava
+    - leaves
+    - log
+    - map:128@21
+    - map@20
+    - mycel
+    - obsidian
+    - packed_ice
+    - quartz_block
+    - quartz_block:1
+    - quartz_block:2
+    - redstone_block
+    - replicate@18
+    - schematic:beacon
+    - schematic:blacksmith
+    - schematic:church
+    - schematic:compact_house
+    - schematic:creeper_rug
+    - schematic:elder_tree
+    - schematic:flare_beacon
+    - schematic:garden_house
+    - schematic:lantern
+    - schematic:rainbow_blocks
+    - schematic:small_house
+    - schematic:stash_chest
+    - soul_sand
+    - stained_clay
+    - stained_glass
+    - stained_glass_pane
+    - stationary_lava
+    - stationary_water
+    - vine
+    - water
+    - wood
+    - wool
+
 hotbar1:
     icon: diamond_axe:221
     upgrade: true
@@ -1669,7 +1809,6 @@ antihunger:
 wand:
     inherit: base_wand
     icon: wood_hoe:1
-    soul: false
     migrate_icon: wood_hoe
     effect_color: random
     path: beginner
@@ -1719,15 +1858,15 @@ wizardleggings:
 
 wolf:
   inherit: conduit
+  path: staff
   icon: wood_hoe:7
   migrate_icon: gold_hoe
-  path: conduit
   hotbar_count: 3
-  fill: true
   protected: true
   powered: true
   cost_reduction: 2.0
   cooldown_reduction: 2.0
+  sp_multiplier: 0
   consume_reduction: 1
   mode: inventory
   effect_color: 0,aa0000000000,cc0000000000
@@ -1740,7 +1879,7 @@ wolf:
   potion_effects:
     - SATURATION
     - REGENERATION
-  active_material: erase
+  active_brush: erase
   active_spell: missile|4
   spells:
     - absorb@8
@@ -1807,7 +1946,7 @@ wolf:
     - place@9
     - portal@119
     - pull@25
-    - push@88
+    - push@24
     - recall@23
     - recurse@97
     - regenerate@98
@@ -1836,7 +1975,7 @@ wolf:
     - supershell@13
     - tag@70
     - tendril@30
-    - torch|2@22
+    - supertorch@22
     - torture@121
     - toss@112
     - tree@89
@@ -1846,7 +1985,7 @@ wolf:
     - wolfhouse@122
     - worm@55
     - wound@28
-  materials:
+  brushes:
     - bedrock
     - clone@19
     - copy@17

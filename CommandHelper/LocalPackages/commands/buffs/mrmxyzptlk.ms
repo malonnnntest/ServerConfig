@@ -12,11 +12,25 @@
             'speech': "Let's play a game.",
             'powers': array(
                 "/buff",
-                "/gmc",
+                "/jump 0-4",
+                "/run 0-6",
+                "/haste 0-3",
                 "/fly",
+                "/magicmrmxyzptlksmortal <playername>",
+                "/disguise",
+                "/gmc",
+                "/gms",
+                "/undisguise",
+                "/disguiseviewself",
+                "/empower",
+                "/back",
+                "/tppos <x> <y> <z>",
                 "/tp",
-                "/confuse <player>",
-                "/magicmrmxyzptlksmortal <playerName>"
-            ),
-            'buffs': array()
+                "Access to all warps"
+           ),
+            'buffs': array(
+                "/effect ". @plr ." 5 9999 5 true",
+                "/effect ". @plr ." 11 9999 4 true",
+                "/effect ". @plr ." 13 9999 1 true"
+            )
         )

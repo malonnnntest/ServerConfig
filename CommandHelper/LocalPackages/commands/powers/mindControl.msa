@@ -2,20 +2,28 @@ mindcontrol:/mindcontrol $plr = >>>
 
     @player = player()
     
-    assign(@cooldown, 600)
+    assign(@cooldown, 60)
     
     assign(@lastUsedMindControl, get_value(@player."lastUsedMindControl"))
     if(@lastUsedMindControl + @cooldown > time() / 1000,
-        die(color(red)."You must cool down before you can mind control anyone again!")
+        assign(@timeleft, subtract(add(@lastUsedMindControl, @cooldown), divide(time(),1000)))
+        tmsg(@player,concat('§c[§4', Error, '§c] §7You must wait another §6', round(@timeleft), ' §7seconds before you can use mind control again!'))
+        die()
     )
     store_value(@player."lastUsedMindControl", time() / 1000)
     
     include('/home/minecraft/server/plugins/CommandHelper/includes/changeSkin.ms')
 
     @vic = $plr
+    @vic = player(@vic)
     
     if(!ponline(@player)){
         broadcast(color(red) . "Sorry, but " . color(blue) . @vic . color(red) . " is not found.")
+        die()
+    }
+
+    if(has_permission(@vic,"is.virus")){
+        tmsg(@player,color(red)."Sorry, that player is a virus, you can't mind control a virus")
         die()
     }
     
@@ -32,13 +40,14 @@ mindcontrol:/mindcontrol $plr = >>>
 stopmindcontrol:/stopmindcontrol = >>>
 
     @player = player()
-    @vic = $vic
 
-    assign(@cooldown, 600)
+    assign(@cooldown, 30)
     
     assign(@lastUsedStopMindControl, get_value(@player."lastUsedStopMindControl"))
     if(@lastUsedStopMindControl + @cooldown > time() / 1000,
-        die(color(red)."You must cool down before you can use stop mind control again!")
+        assign(@timeleft, subtract(add(@lastUsedStopMindControl, @cooldown), divide(time(),1000)))
+        tmsg(@player,concat('§c[§4', Error, '§c] §7You must wait another §6', round(@timeleft), ' §7seconds before you can stop mind control again!'))
+        die()
     )
     store_value(@player."lastUsedStopMindControl", time() / 1000)
 
@@ -46,7 +55,7 @@ stopmindcontrol:/stopmindcontrol = >>>
     
     @pgroup = pgroup()[0]
     
-    runas(~console,"/icu stop @player")
+    runas(~console,'/icu stop '.@player)
     broadcast("@player has stopped mindcontrolling")
     
     include('/home/minecraft/server/plugins/CommandHelper/LocalPackages/commands/buffs/' . @pgroup . '.ms')

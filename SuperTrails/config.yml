@@ -45,6 +45,9 @@ Option:
   LimitPlayers: 10
   LimitMessage: '&cYou''re unable to select trail'
   LimitTrails: false
+  RainFix: false
+  RainMinimalTimeAlive: false
+  PreventRainFromStuck: false
 MultipleTrails:
   Enable: false
   AddedMsg: '&aAdded &7'

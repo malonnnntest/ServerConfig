@@ -29,7 +29,7 @@ changehero:/changehero = >>>
     )
     @intervalID = set_interval(100, closure(
         foreach(@loc in @locs){
-            sudo("/particle totem ".@loc[0]." ".@loc[1]." ".@loc[2]." 0.5 1 0.5 0.01 64")
+            sudo("/particle largesmoke ".@loc[0]." ".@loc[1]." ".@loc[2]." 0.5 1 0.5 0.01 64")
         }
     ))
     set_timeout(1500, closure(){
@@ -41,7 +41,7 @@ changehero:/changehero = >>>
         
         ))
 
-        @plrs = players_in_radius(@locOfRedBlock,1)
+        @plrs = players_in_radius(@locOfRedBlock,1.50)
         @count = array_size(@plrs)
         
         # Make sure only 1 player is in the machine.
@@ -50,16 +50,27 @@ changehero:/changehero = >>>
             die()
         }else if(@count > 1){
             @names = ''
+            @isOneDead = false
             foreach(@player in @plrs){
-                pkill(@player)
+                if(pinfo(@player)[5] == 0){
+                    @isOneDead = true
+                }
                 @names = @player." and ".@names
             }
-            broadcast(@names." had their DNA mixed together, mutated, then died.")
-            die()
+            if(!@isOneDead){
+                foreach(@player in @plrs){
+                    pkill(@player)
+                }
+                broadcast(@names." had their DNA mixed together, mutated, then died.")
+                die()
+            }
         }
         
         # Get player name who is in the machine
         @plrr = @plrs[0]
+        
+        # teleport them to center of block
+        runas(~console,"/tp ".@plrr." ".@plrr)
         
         # Check player inventory for DNA
         @inv = pinv(@plrr)
@@ -80,6 +91,10 @@ changehero:/changehero = >>>
                         if(@numberOfVials > 1){
                             set_pmode(@plrr,"SURVIVAL")
                             runas(~console,"/pex user ".@plrr." group set mortal")
+                            runas(~console,"/effect ".@plrr." clear")
+                            runas(~console,"/speed walk 1 ".@plrr)
+                            runas(~console,"/speed fly 1 ".@plrr)
+                            runas(~console,"/tptoggle ".@plrr." on")
                             set_peffect(@plrr, 2, 3, 9999, true, false)
                             set_peffect(@plrr, 9, 1, 9999, true, false)
                             set_peffect(@plrr, 15, 1, 9999, true, false)
@@ -104,11 +119,16 @@ changehero:/changehero = >>>
         # If player is trying to turn into OP hero and is not a mod, throw error
         include('/home/minecraft/server/plugins/CommandHelper/LocalPackages/commands/buffs/' . @class . '.ms')
         if(@hero['op'] == "true"){
-            if(!has_permission(@plrr,"rank.mod")){
-                tmsg(@plrr,"You can only win ".@hero['name']." §fby becoming staff or in a server tournament")
-                die()
-            }
-        }
+            #if(has_permission(@plrr,"rank.mod") == false){
+                if(acc_balance(@plrr) != 0){
+                    #acc_subtract(@plrr,200)
+                    #tmsg(@plrr,color(green)."$200 taken for use of OP character")
+                }else{
+                    tmsg(@plrr,color(red)."You need at least $1 to use this character")
+                    die()
+                }
+            #}
+         }
         
         # Make sure no other players are currently using the class you want
         # Only one person may be a given hero at a time
@@ -134,6 +154,9 @@ changehero:/changehero = >>>
         if(@num == 1){
             set_pmode(@plrr,"SURVIVAL")
             runas(~console,"/pex user ".@plrr." group set mortal")
+            runas(~console,"/effects ".@plr." clear")
+            runas(~console,"/speed walk 1 ".@plr)
+            runas(~console,"/speed fly 1 ".@plr)
             set_peffect(@plrr, 2, 3, 9999, true, false)
             set_peffect(@plrr, 9, 1, 9999, true, false)
             set_peffect(@plrr, 15, 1, 9999, true, false)
@@ -153,6 +176,7 @@ changehero:/changehero = >>>
         sudo("/effect ".@plrr." clear")
         sudo("/minecraft:clear" @plrr)
         sudo("/god ".@plrr." off")
+        runas(~console,"/tptoggle ".@plrr." on")
         
         _changeSkin(@plrr,@hero['sig'],@hero['val'])
         runas(~console,"/sudo ". @plrr ." c:/trailsid none")

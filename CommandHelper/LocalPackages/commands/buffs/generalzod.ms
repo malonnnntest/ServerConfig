@@ -11,9 +11,12 @@
             'speech': "I am evil superman or some shit idk!",
             'powers': array(
                 "/buff",
+                "/carryplayer",
+                "/dismountplayer",
                 "/run 0-9",
                 "/jump 0-9",
                 "/haste 0-9",
+                "/flyspeed <number>",
                 "/fly"
             ),
             'buffs': array(

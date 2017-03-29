@@ -11,13 +11,17 @@
             'speech': "I'm a mind reader!",
             'powers': array(
                 "/buff",
+                "/flyspeed <number>",
                 "/fly",
                 "/jump 0-3",
                 "/run 0-3",
                 "/haste 0-2",
                 "/confuse <player>",
                 "/disguise",
-                "/disguiseviewself"
+                "/msg",
+                "/mindlock <playername>",
+                "/mindcontrol <playername>",
+                "/stopmindcontrol"
             ),
             'buffs': array(
                 "/effect ". @plr ." 5 9999 1 true",
