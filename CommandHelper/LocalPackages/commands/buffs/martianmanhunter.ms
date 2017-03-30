@@ -11,11 +11,15 @@
             'speech': "The future is worth it. The pain. The tears. The future is worth the fight.",
             'powers': array(
                 "/buff",
+                "/carryplayer",
+                "/dismountplayer",
                 "/jump 0-9",
                 "/run 0-8",
                 "/haste 0-7",
+                "/flyspeed <number>",
                 "/fly",
-                "/thru (intangible)",
+                "/intangible",
+                "/tangible",
                 "/disguise",
                 "/speak <player> <message>",
                 "/mindcontrol <playername>",
@@ -24,7 +28,9 @@
                 "/vis",
                 "/disguiseviewself",
                 "/confuse <player>",
-                "/undisguise"
+                "/undisguise",
+                "/mindlock <playername>",
+                "/msg <playername>"
             ),
             'buffs': array(
                 "/effect ". @plr ." 5 9999 20 true",

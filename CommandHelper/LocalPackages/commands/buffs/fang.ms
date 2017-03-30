@@ -13,7 +13,10 @@
                 "/buff",
                 "/jump 0-5",
                 "/run 0-2",
+                "/carryplayer",
+                "/dismountplayer",
                 "/haste 0-2",
+                "/flyspeed <number>",
                 "/fly",
                 "/invis (automatically de-cloak if you move)",
                 "/vis"

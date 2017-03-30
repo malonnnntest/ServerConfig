@@ -11,9 +11,12 @@
             'speech': "The name is...War Machine.",
             'powers': array(
                 "/buff",
+                "/carryplayer",
+                "/dismountplayer",
                 "/jump 0-2",
                 "/run 0-3",
                 "/haste 0-5",
+                "/flyspeed <number>",
                 "/fly"
             ),
             'buffs': array(

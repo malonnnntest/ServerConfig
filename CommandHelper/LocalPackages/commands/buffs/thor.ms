@@ -11,9 +11,12 @@
             'speech': "The God of Thunder has arrived!",
             'powers': array(
                 "/buff",
+                "/carryplayer",
+                "/dismountplayer",
                 "/jump 0-9",
                 "/run 0-8",
                 "/haste 0-9",
+                "/fly speed <number>",
                 "/fly"
             ),
             'buffs': array(

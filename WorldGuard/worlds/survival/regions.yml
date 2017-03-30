@@ -10,18 +10,29 @@
 # REMEMBER TO KEEP PERIODICAL BACKUPS.
 #
 regions:
-    olympus:
-        min: {x: -432.0, y: 0.0, z: -270.0}
-        max: {x: 419.0, y: 255.0, z: 614.0}
+    spawn:
+        min: {x: 48.0, y: 0.0, z: -220.0}
+        max: {x: 125.0, y: 255.0, z: -92.0}
         members: {}
-        flags: {greeting: §7Welcome to §9Mount Olympus§7!}
+        flags: {other-explosion: deny, creeper-explosion: deny, invincible: allow,
+            mob-damage: deny, greeting: §2Welcome to spawn!, leaf-decay: deny, snow-melt: deny,
+            ghast-fireball: deny, farewell: §4You are leaving spawn!}
+        owners: {}
+        type: cuboid
+        priority: 0
+    gateway:
+        min: {x: 56.0, y: 5.0, z: -250.0}
+        max: {x: 78.0, y: 90.0, z: -221.0}
+        members: {}
+        flags: {other-explosion: deny, ice-form: deny, creeper-explosion: deny, greeting: Welcome to the Gateway,
+            snow-fall: deny, interact: allow, enderman-grief: deny, tnt: deny, ghast-fireball: deny,
+            mob-spawning: deny}
         owners: {}
         type: cuboid
         priority: 0
     __global__:
         members: {}
-        flags: {use: allow, greeting: §4WARNING! §cYou've wandered off the main path! §7This world is frozen in time and §6NOT MEANT FOR PLAYING!§7 Feel free to keep exploring (you can use §9/fly§7 here!) and when you're done use the command §9/warp survival§7 to play normally or use §9/spawn§7 for more choices.,
-            interact: allow}
+        flags: {}
         owners: {}
         type: global
         priority: 0

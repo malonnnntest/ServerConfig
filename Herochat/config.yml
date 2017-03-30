@@ -18,12 +18,12 @@ moderator-permissions:
 default-channel: Global
 censors: []
 format:
-  default: '{groupprefix}&a&l/{suffix}{msg}'
+  default: '&b&l{nick}&a&l/&4{world}&a&l/&f{prefix}&a&l/&f{sender}&a&l/{suffix}{msg}'
   announce: '{color}[{nick}] {msg}'
   emote: '{color}[{nick}] * {msg}'
   private-message: '&d{convoaddress} {convopartner}&d: {msg}'
 use-channel-emotes: true
 locale: en_US
 log-chat: true
-log-to-bukkit: false
+log-to-bukkit: true
 twitter-style-private-messages: true

@@ -5,11 +5,26 @@ bind('player_chat', null, null, @e) {
     @pworld = pworld()
     @puuid = puuid()
     assign(@msg, @e[message])
-    
+
     # -------------------------------
     # if message is 565, display a link to a picture of the "superhero warehouse"
     # -------------------------------
-    if(@msg == '565')
+    @isMindLocked = import(@pname.'isMindLocked')
+    if(@isMindLocked){
+        @mindLocker = import(@pname.'mindLockedBy')
+        if(@mindLocker != ''){
+            tmsg(@mindLocker,color(dark_red).'['.color(red).'mindlock'.color(dark_red).'] '.color(red).@pname.color(dark_red).': '.color(gray).@msg)
+            tmsg(@pname,color(dark_red).'['.color(red).'mindlock'.color(dark_red).'] '.color(red).@pname.color(dark_red).': '.color(gray).@msg)
+            assign(@msg,'')
+            cancel()
+            return()
+        }
+    }
+
+    # -------------------------------
+    # if message is 565, display a link to a picture of the "superhero warehouse"
+    # -------------------------------
+    if(@msg == '565' && @pgroup[0] != "quarantine")
     {
         set_timeout(1000, closure(
             tmsg(@pname, color(dark_red) . color(random) . "k" . color(gray) . "Retrieving classified image for your viewing...")
@@ -48,14 +63,42 @@ bind('player_chat', null, null, @e) {
         modify_event(message, @msg)
     }
     
+    # -------------------------------
+    # replace all messages by time wraith with screams
+    # -------------------------------
+    if(@pgroup[0] == 'timewraith')
+    {
+        @phrase = rand(1, 8)
+        
+        if(@phrase == 1){
+            assign(@msg,"GGRRAAA!")
+        } else if(@phrase == 2){
+            assign(@msg,"aaaaaAAAAAHHHhhhhh!")
+        } else if(@phrase == 3){
+            assign(@msg,'ooooRRRRAAAHH!')
+        } else if(@phrase == 4){
+            assign(@msg,"RRRRRRRAAAA!")
+        } else if(@phrase == 5){
+            assign(@msg,"EEEGGGRREERRAAA!")
+        } else if(@phrase == 6){
+            assign(@msg,"KKKKRRAAHHHHHH!")
+        } else if(@phrase == 7){
+            assign(@msg,"HHRRRRAAAHHH!")
+        }
+        
+        modify_event(message, @msg)
+    }
     
     # -------------------------------
     # if player is "confused", mix up their words
     # -------------------------------
-    if(@pname == "Hero_Of_Helix" || (!is_null(get_value(@pname."isConfused"))) && (get_value(@pname."isConfused") == "true"))
+    if((!is_null(get_value(@pname."isConfused"))) && (get_value(@pname."isConfused") == "true"))
     {
         @words = split(' ',@msg)
         @numWords = array_size(@words)
+        if(@numWords == 1){
+            cancel()
+        }
         @newNumOfWords = @numWords
         @newMsg = ''
         for(@i = 0, @i < @numWords, @i++){
@@ -65,9 +108,6 @@ bind('player_chat', null, null, @e) {
             @newNumOfWords = @newNumOfWords - 1
             @numWords = @numWords - 1
         }
-        
-        
-        
         modify_event(message, @newMsg)
     }
     
@@ -92,6 +132,38 @@ bind('player_chat', null, null, @e) {
             assign(@msg,"Pika! Pika!")
         } else if(@phrase == 7){
             assign(@msg,"Pika Pi!")
+        }
+        
+        modify_event(message, @msg)
+    }
+    
+    # -------------------------------
+    # replace all messages by Greninja with Greninja stuff
+    # -------------------------------
+    if(@pgroup[0] == 'victini')
+    {
+        @phrase = rand(1, 3)
+        
+        if(@phrase == 1){
+            assign(@msg,"Vic, Victini!")
+        } else if(@phrase == 2){
+            assign(@msg,"Victini!")
+        }
+        
+        modify_event(message, @msg)
+    }
+
+    # -------------------------------
+    # replace all messages by Greninja with Greninja stuff
+    # -------------------------------
+    if(@pgroup[0] == 'greninja')
+    {
+        @phrase = rand(1, 3)
+        
+        if(@phrase == 1){
+            assign(@msg,"Gre, Greninja!")
+        } else if(@phrase == 2){
+            assign(@msg,"Greninja!")
         }
         
         modify_event(message, @msg)
@@ -172,26 +244,43 @@ bind('player_chat', null, null, @e) {
     #assign(@msg, reg_replace('(?i)g+[. ,-_]*u+[. ,-_]*c+[. ,-_]*i+', 'gay', @msg))
     #assign(@msg, reg_replace('(?i)\\bcx', 'cocks', @msg))
     #assign(@msg, reg_replace('(?i)o+[. ,-]*m+[. ,-]*l+', 'omg', @msg))
-    #assign(@msg, reg_replace('(?i)h+[. ,-]*a+[. ,-]*r+[. ,-]*k+', 'horky parky', @msg))
+    #assign(@msg, reg_replace('(?i)t+[ .,-_]*e+[ .,-_]*k+[ .,-_]*t+[ .,-_]*r+[ .,-_]*o+[ .,-_]*n+[ .,-_]*i+[ .,-_]*c+', @pname, @msg))
+    #assign(@msg, reg_replace('(?i)t+[ .,-_]*r+[ .,-_]*o+[ .,-_]*n+[ .,-_]*i+[ .,-_]*c+', @pname, @msg))
+    #assign(@msg, reg_replace('(?i)t+[ .,-_]*e+[ .,-_]*k+', @pname, @msg))
 
     #modify_event(message, @msg)
     
+    #@temp = reg_match('[^ -~]',@msg)
+    #if(array_size(@temp) > 0){
+    #    cancel()
+    #}
+
     # -------------------------------
     # If a player is a mod, stop the script at this point because the mods are not bound by chat timeout
     # -------------------------------
-    if(has_permission("rank.mod"))
+    if(has_permission("rank.mod") && has_permission("is.virus") ==  false)
     {
         die()
     }
-
-    # @msg = to_lower(@msg)
-    # modify_event(message, @msg)
+    
+    if(has_permission(@pname,'case.tolower')){
+        @msg = to_lower(@msg)
+      modify_event(message, @msg)
+    }
      
     # -------------------------------
     # chat timeout settings
     # -------------------------------
-   
-    @cooldown = 3
+    if(has_permission("is.virus")){
+        @cooldown = 60
+}else if(@pname == "Suannaii"){
+        @cooldown = 1
+    }else{
+        @plrz = all_players()
+        @size = array_size(@plrz)
+       # @cooldown = @size / 2
+        @cooldown = 0
+    }
     if(is_null(get_value(@pname.'lastmessage')))
     {
         store_value(@pname.'lastmessage',0)

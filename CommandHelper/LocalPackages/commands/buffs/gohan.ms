@@ -15,7 +15,10 @@
                 "/jump 0-9",
                 "/run 0-9",
                 "/haste 0-9",
-                "/fly"
+                "/flyspeed <number>",
+                "/fly",
+                "/carryplayer <player>",
+                "/dismountplayer"
             ),
             'buffs': array(
                 "/effect ". @plr ." 5 9999 18 true",
@@ -24,6 +27,7 @@
                 "/effect ". @plr ." 12 9999 1 true",
                 "/effect ". @plr ." 13 9999 1 true",
                 "/effect ". @plr ." 21 9999 19 true",
-                "/shot give ". @plr ." kamehameha"                
+                "/shot give ". @plr ." kamehameha",
+                "/shot give ". @plr ." kiblast"
             )
         )

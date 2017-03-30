@@ -13,6 +13,7 @@
             'speech': "I am the protector!",
             'powers': array(
                 "/buff",
+                "/flyspeed <number>",
                 "/fly",
                 "/mindcontrol <playername>",
                 "/stopmindcontrol",

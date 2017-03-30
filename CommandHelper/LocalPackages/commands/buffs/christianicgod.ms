@@ -10,9 +10,13 @@
             'trail': '',
             'op': 'false',
             'speech': '',
-            'speech': "The soul can split the sky in two and let the face of God shine through",
+            'speech': "Fuck you, I am the way.",
             'powers': array(
-                "/buff"
+                "/buff",
+                "/watertowine"
             ),
-            'buffs': array()
+            'buffs': array(
+                "/give ". @plr ." minecraft:iron_boots 1 8:30 4:30 name:&fWater_Walking_Boots"
+            
         )
+     )

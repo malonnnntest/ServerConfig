@@ -12,6 +12,8 @@
             'speech': "It's Hulk Bustin' Time!",
             'powers': array(
                 "/buff",
+                "/carryplayer",
+                "/dismountplayer",
                 "/jump 0-3",
                 "/run 0-3",
                 "/haste 0-6"
@@ -21,6 +23,9 @@
                 "/effect ". @plr ." 11 9999 2 true",
                 "/effect ". @plr ." 13 9999 1 true",
                 "/effect ". @plr ." 16 9999 1 true",
-                "/effect ". @plr ." 21 9999 14 true"              
+                "/effect ". @plr ." 21 9999 14 true",
+                "/shot give ". @plr ." ironmansmachinegun",
+                "/shot give ". @plr ." ironmanshomingmissile",
+                "/shot give ". @plr ." quantumlaser"
             )
         )
